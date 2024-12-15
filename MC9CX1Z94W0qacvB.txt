@@ -1,0 +1,10 @@
+MC9CX1Z94W0qacvB
+shivanurag2005
+mongodb+srv://shivanurag2005:MC9CX1Z94W0qacvB@cluster0.adsoh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+npm init -y
+npm install express mongoose dotenv socket.io
+node server.js
+npm install node-cron
+npm install --save-dev jest supertest
+npm test

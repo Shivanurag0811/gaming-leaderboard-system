@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaming Leaderboard</title>
+  <script src="/socket.io/socket.io.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+  <div class="container">
+    <h1>Gaming Leaderboard</h1>
+
+    <!-- Region and Global Leaderboard Selection -->
+    <div class="filters">
+      <button id="globalLeaderboardBtn">Global Leaderboard</button>
+      <button id="regionalLeaderboardBtn">Regional Leaderboard</button>
+    </div>
+
+    <!-- Table to Display Leaderboard -->
+    <div id="leaderboard" class="leaderboard">
+      <h2>Leaderboard</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th>Region</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboardList">
+          <!-- Dynamic rows will be inserted here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Form to Submit Scores -->
+    <div class="score-form">
+      <h3>Submit Your Score</h3>
+      <form id="scoreForm">
+        <input type="text" id="playerName" placeholder="Your Name" required>
+        <input type="number" id="score" placeholder="Score" required>
+        <select id="game">
+          <option value="game1">Game A</option>
+          <option value="game2">Game B</option>
+        </select>
+        <button type="submit">Submit Score</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"></script>
+  <script src="app.js"></script>
+  <script>
+    const socket = io('http://localhost:5000');  // Connect to server
+
+    // Listen for score updates
+    socket.on('scoreUpdate', (data) => {
+      const leaderboard = document.getElementById('leaderboard');
+      const newScoreElement = document.createElement('div');
+      newScoreElement.innerHTML = `${data.username} scored ${data.score} points in ${data.gameName}`;
+      leaderboard.appendChild(newScoreElement);
+    });
+  </script>
+</body>
+</html>
