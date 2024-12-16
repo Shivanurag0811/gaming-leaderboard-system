@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaming Leaderboard</title>
+  <link rel="stylesheet" href="style2.css">
+  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Gaming Leaderboard System</h1>
+    </header>
+
+    <!-- Game Section -->
+    <section class="game-section">
+      <h2>Play the Game</h2>
+      <canvas id="gameCanvas"></canvas>
+      <button id="startGame">Start Game</button>
+      <p>Score: <span id="playerScore">0</span></p>
+    </section>
+
+    <!-- Region and Global Leaderboard Selection -->
+    <div class="filters">
+      <button id="globalLeaderboardBtn">Global Leaderboard</button>
+      <button id="regionalLeaderboardBtn">Regional Leaderboard</button>
+    </div>
+
+    <!-- Leaderboard -->
+    <section class="leaderboard">
+      <h2>Leaderboard</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th>Region</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboardTable">
+          <!-- Dynamic rows will be inserted here -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Form to Submit Scores -->
+    <div class="score-form">
+      <h3>Submit Your Score</h3>
+      <form id="scoreForm">
+        <input type="text" id="playerName" placeholder="Your Name" required>
+        <input type="number" id="score" placeholder="Score" required>
+        <select id="region">
+          <option value="North America">North America</option>
+          <option value="Europe">Europe</option>
+          <option value="Asia">Asia</option>
+        </select>
+        <button type="submit">Submit Score</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script2.js"></script>
+</body>
+</html>
